@@ -75,6 +75,9 @@ public class App {
                 cancionAdmin.listarPorAlbum(usuario);
                 break;
             case 13:
+                cancionAdmin.mostrarCancionMasEscuchada();
+                break;
+            case 14:
                 continuar = false;
                 break;
         }
@@ -87,16 +90,18 @@ public class App {
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String codigo = "";
-        while (codigo.isEmpty()) {
+        while (codigo == null || codigo.isEmpty()) {
             System.out.print("Ingrese su codigo: ");
             try {
                 codigo = br.readLine();
+                usuario = personaAdmin.buscarPorCodigo(codigo);
+                if (usuario == null) {
+                    codigo = null;
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Exam.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        usuario = personaAdmin.buscarPorCodigo(codigo);
     }
     
     public int menu() {
@@ -117,7 +122,8 @@ public class App {
         System.out.println("10.- Pagar");
         System.out.println("11.- Listar canciones por Artista");
         System.out.println("12.- Listar canciones por Album");
-        System.out.println("13.- Salir\n");
+        System.out.println("13.- Cancion más escuchada");
+        System.out.println("14.- Salir\n");
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String opcionStr = "";
@@ -127,7 +133,7 @@ public class App {
             try {
                 opcionStr = br.readLine();
                 opcion = Integer.parseInt(opcionStr);
-                if (opcion > 0 && opcion < 14) {
+                if (opcion > 0 && opcion < 15) {
                     return opcion;
                 }
             } catch (Exception ex) {

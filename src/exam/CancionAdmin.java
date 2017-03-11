@@ -214,4 +214,18 @@ public class CancionAdmin extends Admin implements IntAdmin {
             }
         }
     }
+    
+    public void mostrarCancionMasEscuchada() {
+        Cancion c = null;
+        int max = -1;
+        for (Cancion cancion : canciones) {
+            if (max < cancion.getContador()) {
+                max = cancion.getContador();
+                c = cancion;
+            }
+        }
+        
+        System.out.println("\nLa cancion mas escuchada: ");
+        System.out.println(c);
+    }
 }
