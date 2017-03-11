@@ -73,7 +73,7 @@ public class PersonaAdmin extends Admin {
         for (int i = 0; i < personas.size(); i++) {
             Persona persona = personas.get(i);
             
-            System.out.println(i + " - " + persona);
+            System.out.println(persona);
         }
     }
     
@@ -102,6 +102,7 @@ public class PersonaAdmin extends Admin {
             persona.setPremium(false);
         } else {
             System.out.println("DATOS ANTERIORES");
+            System.out.println("Codigo: " + persona.getCodigo());
             System.out.println("Cedula: " + persona.getCedula());
             System.out.println("Nombre: " + persona.getNombre());
             System.out.println("Apellido: " + persona.getApellido());
@@ -110,6 +111,7 @@ public class PersonaAdmin extends Admin {
         }
         
         try {
+            persona.setCodigo(leerDato("Codigo:"));
             persona.setCedula(leerDato("Cedula:"));
             persona.setNombre(leerDato("Nombre:"));
             persona.setApellido(leerDato("Apellido:"));
@@ -124,5 +126,18 @@ public class PersonaAdmin extends Admin {
     
     public void validar(Cancion cancion) {
         
+    }
+    
+        // busca una persona dado su id
+    public Persona buscarPorCodigo(String codigo) {
+        for (int i = 0; i < personas.size(); i++) {
+            Persona persona = personas.get(i);
+            
+            if (persona.getCodigo().equals(codigo)) {
+                return persona;
+            }
+        }
+        
+        return null;
     }
 }

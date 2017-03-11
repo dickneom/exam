@@ -15,12 +15,13 @@ public class Cancion extends Objeto {
     private String artista;
     private int duracion;
     private int contador;
+    private boolean gratis;
 
     public Cancion() {
         super();
     }
 
-    public Cancion(int id, String nombre, String album, String artista, int duracion, int contador) {
+    public Cancion(int id, String nombre, String album, String artista, int duracion, int contador, boolean gratis) {
         this();
         this.id = id;
         this.nombre = nombre;
@@ -28,6 +29,7 @@ public class Cancion extends Objeto {
         this.artista = artista;
         this.duracion = duracion;
         this.contador = contador;
+        this.gratis = gratis;
     }
 
     public String getNombre() {
@@ -68,6 +70,14 @@ public class Cancion extends Objeto {
 
     public void setContador(int contador) {
         this.contador = contador;
+    }
+
+    public boolean isGratis() {
+        return gratis;
+    }
+
+    public void setGratis(boolean gratis) {
+        this.gratis = gratis;
     }
     
     @Override

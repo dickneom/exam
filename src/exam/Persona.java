@@ -10,20 +10,22 @@ package exam;
  * @author dickneom
  */
 public class Persona extends Objeto {
-    public String cedula;
-    public String nombre;
-    public String apellido;
-    public int edad;
-    public String email;
-    public boolean premium;
+    private String codigo;
+    private String cedula;
+    private String nombre;
+    private String apellido;
+    private int edad;
+    private String email;
+    private boolean premium;
 
     public Persona() {
         super();
     }
 
-    public Persona(int id, String cedula, String nombre, String apellido, int edad, String email, boolean premium) {
+    public Persona(int id, String codigo, String cedula, String nombre, String apellido, int edad, String email, boolean premium) {
         this();
         this.id = id;
+        this.codigo = codigo;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -31,9 +33,15 @@ public class Persona extends Objeto {
         this.email = email;
         this.premium = premium;
     }
-    
-    
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
     public String getCedula() {
         return cedula;
     }

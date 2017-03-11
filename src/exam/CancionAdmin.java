@@ -47,7 +47,7 @@ public class CancionAdmin extends Admin {
             } else {
                 System.out.println("CANCION NO ENCONTRADA.");
             }
-        } catch (Exception ex) {
+        } catch (IOException | NumberFormatException ex) {
             Logger.getLogger(CancionAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -69,20 +69,23 @@ public class CancionAdmin extends Admin {
     }
     
     
-    public void listarTodo() {
+    public void listarTodo(Persona usuario) {
         for (int i = 0; i < canciones.size(); i++) {
             Cancion cancion = canciones.get(i);
             
-            System.out.println(i + " - " + cancion);
+            if (cancion.isGratis() || usuario.isPremium()) {
+                System.out.println(cancion);
+            }
         }
     }
     
-    public void escuchar() {
+    public void escuchar(Persona usuario) {
         try {
             String idCancionStr = leerDato("Id de la cancion a escuchar:");
             int id = Integer.parseInt(idCancionStr);
             Cancion cancion = canciones.buscarPorId(id);
             if (cancion != null) {
+                if (cancion.isGratis() || usuario.isPremium())
                 System.out.println("Escuchando cancion: " + cancion.getNombre());
                 int indice = canciones.buscarIndice(id);
                 cancion.setContador(cancion.getContador() + 1);
@@ -90,7 +93,7 @@ public class CancionAdmin extends Admin {
             } else {
                 System.out.println("CANCION NO ENCONTRADA.");
             }
-        } catch (Exception ex) {
+        } catch (IOException | NumberFormatException ex) {
             Logger.getLogger(CancionAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -106,6 +109,7 @@ public class CancionAdmin extends Admin {
             System.out.println("Album: " + cancion.getAlbum());
             System.out.println("Artista: " + cancion.getArtista());
             System.out.println("Duración: " + cancion.getDuracion());
+            System.out.println("Gratis: " + (cancion.isGratis() ? "SI" : "NO"));
         }
         
         try {
@@ -113,6 +117,7 @@ public class CancionAdmin extends Admin {
             cancion.setAlbum(leerDato("Album:"));
             cancion.setArtista(leerDato("Artista:"));
             cancion.setDuracion(Integer.parseInt(leerDato("Duración:")));
+            cancion.setGratis("S".equals(leerDato("Gratis [S/N]:")));
         } catch (IOException ex) {
             Logger.getLogger(CancionAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }

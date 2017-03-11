@@ -16,7 +16,6 @@ import java.util.logging.Logger;
  * @author dickneom
  */
 public class App {
-    private String codUsuario;
     private Persona usuario;
     
     private CancionAdmin cancionAdmin;
@@ -49,10 +48,10 @@ public class App {
                 cancionAdmin.eliminar();
                 break;
             case 4:
-                cancionAdmin.listarTodo();
+                cancionAdmin.listarTodo(usuario);
                 break;
             case 5:
-                cancionAdmin.escuchar();
+                cancionAdmin.escuchar(usuario);
                 break;
             case 6:
                 personaAdmin.agregar();
@@ -91,11 +90,13 @@ public class App {
             }
         }
         
-        codUsuario = codigo;
+        usuario = personaAdmin.buscarPorCodigo(codigo);
     }
     
     public int menu() {
-        System.out.println("SISTEMA DE CANCIONES\n");
+        System.out.println("\nSISTEMA DE CANCIONES");
+        System.out.println("Usuario: " + usuario.getNombre());
+        System.out.println("");
         
         System.out.println("MENU PRINCIPAL");
         System.out.println("1.- Agregar cancion");
