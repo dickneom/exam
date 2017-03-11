@@ -14,6 +14,9 @@ import java.util.LinkedList;
 public class Canciones extends LinkedList<Cancion> {
 
     public Canciones() {
+    }
+    
+    public void llenar() {
         add(new Cancion(1, "Cancion 1", "Album 1", "Artista 1", 180, 0, true));
         add(new Cancion(2, "Cancion 2", "Album 2", "Artista 2", 280, 0, true));
         add(new Cancion(3, "Cancion 3", "Album 1", "Artista 1", 250, 0, true));
@@ -56,32 +59,4 @@ public class Canciones extends LinkedList<Cancion> {
         
         return null;
     }
-    
-    // busca la primera cancion con el nombre dado
-/*    public Cancion buscarPorNombre(String nombre) {
-        for (int i = 0; i < size(); i++) {
-            Cancion cancion = get(i);
-            
-            if (cancion.getNombre().equals(nombre)) {
-                return cancion;
-            }
-        }
-        
-        return null;
-    } */
-    
-    // muestra todas las canciones
-/*    public void listarTodo() {
-        for (int i = 0; i < size(); i++) {
-            Cancion cancion = get(i);
-            
-            System.out.println(i + " - " + cancion);
-        }
-    }*/
-    
-    // muestra una cancion dado su id
-/*    public void mostrarUno(int id) {
-        Cancion cancion = buscarPorId(id);
-        System.out.println(cancion);
-    }*/
 }

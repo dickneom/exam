@@ -5,7 +5,9 @@
  */
 package exam;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +20,7 @@ public class CancionAdmin extends Admin implements IntAdmin {
 
     public CancionAdmin() {
         canciones = new Canciones();
+        canciones.llenar();
     }
     
     @Override
@@ -73,6 +76,7 @@ public class CancionAdmin extends Admin implements IntAdmin {
     
     
     public void listarTodo() {
+        System.out.println("\nID - NOMBRE - APELLIDO - ALBUM - ARTISTA - DURACION - ESCUCHADA - GRATIS?");
         for (int i = 0; i < canciones.size(); i++) {
             Cancion cancion = canciones.get(i);
             
@@ -81,6 +85,7 @@ public class CancionAdmin extends Admin implements IntAdmin {
     }
     
     public void listarTodo(Persona usuario) {
+        System.out.println("\nID - NOMBRE - APELLIDO - ALBUM - ARTISTA - DURACION - ESCUCHADA - GRATIS?");
         for (int i = 0; i < canciones.size(); i++) {
             Cancion cancion = canciones.get(i);
             
@@ -96,11 +101,14 @@ public class CancionAdmin extends Admin implements IntAdmin {
             int id = Integer.parseInt(idCancionStr);
             Cancion cancion = canciones.buscarPorId(id);
             if (cancion != null) {
-                if (cancion.isGratis() || usuario.isPremium())
-                System.out.println("Escuchando cancion: " + cancion.getNombre());
-                int indice = canciones.buscarIndice(id);
-                cancion.setContador(cancion.getContador() + 1);
-                canciones.set(indice, cancion);
+                if (cancion.isGratis() || usuario.isPremium()) {
+                    System.out.println("Escuchando cancion: " + cancion.getNombre());
+                    int indice = canciones.buscarIndice(id);
+                    cancion.setContador(cancion.getContador() + 1);
+                    canciones.set(indice, cancion);
+                } else {
+                    System.out.println("CANCION SOLO PARA CUENTAS PREMIUM.");
+                }
             } else {
                 System.out.println("CANCION NO ENCONTRADA.");
             }
@@ -138,5 +146,72 @@ public class CancionAdmin extends Admin implements IntAdmin {
     
     public void validar(Cancion cancion) {
         
+    }
+    
+    public void listarPorArtista(Persona usuario) {
+        Canciones cs = new Canciones();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String artista = "";
+        while (artista == null || artista.isEmpty()) {
+            System.out.print("Ingrese el nombre del artista: ");
+            try {
+                artista = br.readLine();
+            } catch (IOException ex) {
+            } finally {
+            }
+        }
+        
+        for (Cancion cancion : canciones) {
+            System.out.println("Comparando: " + cancion.getArtista() + " - " + artista);
+            if (cancion.getArtista().equals(artista)) {
+                cs.add(cancion);
+            }
+        }
+        
+        if (cs.size() > 0) {
+            listar(cs, usuario);
+        } else {
+            System.out.println("NO SE ENCONTRO CANCIONES");
+        }
+    }
+    
+    public void listarPorAlbum(Persona usuario) {
+        Canciones cs = new Canciones();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String album = "";
+        while (album == null || album.isEmpty()) {
+            System.out.print("Ingrese el nombre del album: ");
+            try {
+                album = br.readLine();
+            } catch (IOException ex) {
+            } finally {
+            }
+        }
+        
+        for (Cancion cancion : canciones) {
+            if (cancion.getAlbum().equals(album)) {
+                cs.add(cancion);
+            }
+        }
+        
+        if (cs.size() > 0) {
+            listar(cs, usuario);
+        } else {
+            System.out.println("NO SE ENCONTRO CANCIONES");
+        }
+    }
+    
+    public void listar(Canciones cs, Persona usuario) {
+        System.out.println("\nLISTA DE CANCIONES");
+        System.out.println("ID - NOMBRE - APELLIDO - ALBUM - ARTISTA - DURACION - ESCUCHADA - GRATIS?");
+        for (int i = 0; i < cs.size(); i++) {
+            Cancion cancion = cs.get(i);
+            
+            if (cancion.isGratis() || usuario.isPremium()) {
+                System.out.println(cancion);
+            }
+        }
     }
 }

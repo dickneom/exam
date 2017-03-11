@@ -70,6 +70,7 @@ public class PersonaAdmin extends Admin implements IntAdmin {
     
     
     public void listarTodo() {
+        System.out.println("\nID - COD - CEDULA - NOMBRE - APELLIDO - EDAD - EMAIL - PREMIUM?");
         for (int i = 0; i < personas.size(); i++) {
             Persona persona = personas.get(i);
             
@@ -128,7 +129,7 @@ public class PersonaAdmin extends Admin implements IntAdmin {
         
     }
     
-        // busca una persona dado su id
+    // busca una persona dado su codigo
     public Persona buscarPorCodigo(String codigo) {
         for (int i = 0; i < personas.size(); i++) {
             Persona persona = personas.get(i);

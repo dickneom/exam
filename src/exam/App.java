@@ -69,6 +69,12 @@ public class App {
                 personaAdmin.pagar();
                 break;
             case 11:
+                cancionAdmin.listarPorArtista(usuario);
+                break;
+            case 12:
+                cancionAdmin.listarPorAlbum(usuario);
+                break;
+            case 13:
                 continuar = false;
                 break;
         }
@@ -109,7 +115,9 @@ public class App {
         System.out.println("8.- Eliminar usuario");
         System.out.println("9.- Listar usuario");
         System.out.println("10.- Pagar");
-        System.out.println("11.- Salir\n");
+        System.out.println("11.- Listar canciones por Artista");
+        System.out.println("12.- Listar canciones por Album");
+        System.out.println("13.- Salir\n");
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String opcionStr = "";
@@ -119,7 +127,7 @@ public class App {
             try {
                 opcionStr = br.readLine();
                 opcion = Integer.parseInt(opcionStr);
-                if (opcion > 0 && opcion < 12) {
+                if (opcion > 0 && opcion < 14) {
                     return opcion;
                 }
             } catch (Exception ex) {
