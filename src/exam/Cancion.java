@@ -9,7 +9,7 @@ package exam;
  *
  * @author dickneom
  */
-public class Cancion {
+public class Cancion extends Objeto {
     public String nombre;
     public String album;
     public String artista;

@@ -15,7 +15,11 @@ public class Exam {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        CancionAdmin ca = new CancionAdmin();
+        
+        Cancion c = ca.editar(null);
+        
+        System.out.println("Cancion: " + c);
     }
     
 }
