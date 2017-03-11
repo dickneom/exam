@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author dickneom
  */
-public class PersonaAdmin extends Admin {
+public class PersonaAdmin extends Admin implements IntAdmin {
     public Personas personas;
 
     public PersonaAdmin() {

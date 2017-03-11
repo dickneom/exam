@@ -13,13 +13,14 @@ import java.util.logging.Logger;
  *
  * @author dickneom
  */
-public class CancionAdmin extends Admin {
+public class CancionAdmin extends Admin implements IntAdmin {
     public Canciones canciones;
 
     public CancionAdmin() {
         canciones = new Canciones();
     }
     
+    @Override
     public void agregar() {
         Cancion cancion = editar(null);
         cancion.setId(proximoId());
@@ -35,6 +36,7 @@ public class CancionAdmin extends Admin {
         return id + 1;
     }
     
+    @Override
     public void actualizar() {
         try {
             String idCancionStr = leerDato("Id de la cancion a editar:");
@@ -52,6 +54,7 @@ public class CancionAdmin extends Admin {
         }
     }
     
+    @Override
     public void eliminar() {
         try {
             String idCancionStr = leerDato("Id de la cancion a eliminar:");
@@ -68,6 +71,14 @@ public class CancionAdmin extends Admin {
         }
     }
     
+    
+    public void listarTodo() {
+        for (int i = 0; i < canciones.size(); i++) {
+            Cancion cancion = canciones.get(i);
+            
+            System.out.println(cancion);
+        }
+    }
     
     public void listarTodo(Persona usuario) {
         for (int i = 0; i < canciones.size(); i++) {

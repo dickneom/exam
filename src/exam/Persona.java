@@ -92,6 +92,6 @@ public class Persona extends Objeto {
     
     @Override
     public String toString() {
-        return id + " - " + cedula + " - " + nombre + " - " + " apellido " + " - " + edad + " - " + email + " - " + (premium ? "SI" : "NO");
+        return id + " - " + codigo + " - " + cedula + " - " + nombre + " - " + apellido + " - " + edad + " - " + email + " - " + (premium ? "SI" : "NO");
     }
 }

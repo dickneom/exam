@@ -82,7 +82,7 @@ public class Cancion extends Objeto {
     
     @Override
     public String toString() {
-        return id + " - " + nombre + " - " + album + " - " + artista + " - " + String.valueOf(duracion) + " - " + String.valueOf(contador);
+        return id + " - " + nombre + " - " + album + " - " + artista + " - " + String.valueOf(duracion) + " - " + String.valueOf(contador) + " - " + (gratis ? "GRATIS" : "PREMIUM");
     }
 
 }
