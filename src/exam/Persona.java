@@ -13,11 +13,26 @@ public class Persona extends Objeto {
     public String cedula;
     public String nombre;
     public String apellido;
-    public String edad;
+    public int edad;
     public String email;
+    public boolean premium;
 
     public Persona() {
+        super();
     }
+
+    public Persona(int id, String cedula, String nombre, String apellido, int edad, String email, boolean premium) {
+        this();
+        this.id = id;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.email = email;
+        this.premium = premium;
+    }
+    
+    
 
     public String getCedula() {
         return cedula;
@@ -43,11 +58,11 @@ public class Persona extends Objeto {
         this.apellido = apellido;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
@@ -58,6 +73,17 @@ public class Persona extends Objeto {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
     
-    
+    @Override
+    public String toString() {
+        return id + " - " + cedula + " - " + nombre + " - " + " apellido " + " - " + edad + " - " + email + " - " + (premium ? "SI" : "NO");
+    }
 }

@@ -99,10 +99,11 @@ public class CancionAdmin extends Admin {
 
         if (cancion == null) {
             cancion = new Cancion();
+            cancion.setContador(0);
         } else {
             System.out.println("DATOS ANTERIORES");
             System.out.println("Nombre: " + cancion.getNombre());
-            System.out.println("Albun: " + cancion.getAlbum());
+            System.out.println("Album: " + cancion.getAlbum());
             System.out.println("Artista: " + cancion.getArtista());
             System.out.println("Duración: " + cancion.getDuracion());
         }
@@ -111,8 +112,7 @@ public class CancionAdmin extends Admin {
             cancion.setNombre(leerDato("Nombre:"));
             cancion.setAlbum(leerDato("Album:"));
             cancion.setArtista(leerDato("Artista:"));
-            cancion.setDuracion(Integer.parseInt(leerDato("Duracion:")));
-            cancion.setContador(0);
+            cancion.setDuracion(Integer.parseInt(leerDato("Duración:")));
         } catch (IOException ex) {
             Logger.getLogger(CancionAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }

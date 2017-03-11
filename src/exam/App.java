@@ -19,10 +19,12 @@ public class App {
     private String codUsuario;
     private Persona usuario;
     
-    CancionAdmin cancionAdmin;
+    private CancionAdmin cancionAdmin;
+    private PersonaAdmin personaAdmin;
 
     public App() {
         cancionAdmin = new CancionAdmin();
+        personaAdmin = new PersonaAdmin();
         
         ingresar();
         
@@ -53,6 +55,21 @@ public class App {
                 cancionAdmin.escuchar();
                 break;
             case 6:
+                personaAdmin.agregar();
+                break;
+            case 7:
+                personaAdmin.actualizar();
+                break;
+            case 8:
+                personaAdmin.eliminar();
+                break;
+            case 9:
+                personaAdmin.listarTodo();
+                break;
+            case 10:
+                personaAdmin.pagar();
+                break;
+            case 11:
                 continuar = false;
                 break;
         }
@@ -86,7 +103,12 @@ public class App {
         System.out.println("3.- Eliminar cancion");
         System.out.println("4.- Listar cancion");
         System.out.println("5.- Escuchar cancion");
-        System.out.println("6.- Salir\n");
+        System.out.println("6.- Agregar usuario");
+        System.out.println("7.- Actualizar usuario");
+        System.out.println("8.- Eliminar usuario");
+        System.out.println("9.- Listar usuario");
+        System.out.println("10.- Pagar");
+        System.out.println("11.- Salir\n");
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String opcionStr = "";
@@ -96,7 +118,7 @@ public class App {
             try {
                 opcionStr = br.readLine();
                 opcion = Integer.parseInt(opcionStr);
-                if (opcion > 0 && opcion < 7) {
+                if (opcion > 0 && opcion < 12) {
                     return opcion;
                 }
             } catch (Exception ex) {
