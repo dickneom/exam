@@ -10,11 +10,11 @@ package exam;
  * @author dickneom
  */
 public class Cancion extends Objeto {
-    public String nombre;
-    public String album;
-    public String artista;
-    public int duracion;
-    public int contador;
+    private String nombre;
+    private String album;
+    private String artista;
+    private int duracion;
+    private int contador;
 
     public Cancion() {
     }

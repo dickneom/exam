@@ -19,6 +19,12 @@ public class Exam {
         
         ca.actualizar(3);
         
+        System.out.println("Actuzalizado");
+        ca.listarTodo();
+        
+        System.out.println("Eliminando");
+        ca.eliminar(5);
+        
         ca.listarTodo();
     }
     

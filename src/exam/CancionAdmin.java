@@ -25,7 +25,14 @@ public class CancionAdmin extends Admin {
 
         if (cancion == null) {
             cancion = new Cancion();
+        } else {
+            System.out.println("DATOS ANTERIORES");
+            System.out.println("Nombre: " + cancion.getNombre());
+            System.out.println("Albun: " + cancion.getAlbum());
+            System.out.println("Artista: " + cancion.getArtista());
+            System.out.println("Duración: " + cancion.getDuracion());
         }
+        
         try {
             cancion.setNombre(leerDato("Nombre:"));
             cancion.setAlbum(leerDato("Album:"));
@@ -54,8 +61,8 @@ public class CancionAdmin extends Admin {
         canciones.set(cancion.getId(), cancion);
     }
     
-    public void eliminar(int id) {
-        
+    public void eliminar(int indice) {
+        canciones.remove(indice);
     }
     
     public Cancion buscar(int indice) {
