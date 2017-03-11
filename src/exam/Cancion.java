@@ -9,22 +9,22 @@ package exam;
  *
  * @author dickneom
  */
-public class Cancion extends Objeto{
-    public String cedula;
+public class Cancion {
     public String nombre;
-    public String apellido;
-    public String edad;
-    public String email;
+    public String album;
+    public String artista;
+    public int duracion;
+    public int contador;
 
     public Cancion() {
     }
 
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public Cancion(String nombre, String album, String artista, int duracion, int contador) {
+        this.nombre = nombre;
+        this.album = album;
+        this.artista = artista;
+        this.duracion = duracion;
+        this.contador = contador;
     }
 
     public String getNombre() {
@@ -35,29 +35,41 @@ public class Cancion extends Objeto{
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getAlbum() {
+        return album;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setAlbum(String album) {
+        this.album = album;
     }
 
-    public String getEdad() {
-        return edad;
+    public String getArtista() {
+        return artista;
     }
 
-    public void setEdad(String edad) {
-        this.edad = edad;
+    public void setArtista(String artista) {
+        this.artista = artista;
     }
 
-    public String getEmail() {
-        return email;
+    public int getDuracion() {
+        return duracion;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
     }
     
-    
+    @Override
+    public String toString() {
+        return nombre + " - " + album + " - " + artista + " - " + String.valueOf(duracion) + " - " + String.valueOf(contador);
+    }
+
 }
