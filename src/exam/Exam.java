@@ -17,9 +17,9 @@ public class Exam {
     public static void main(String[] args) {
         CancionAdmin ca = new CancionAdmin();
         
-        Cancion c = ca.editar(null);
+        ca.agregar();
         
-        System.out.println("Cancion: " + c);
+        ca.listarTodo();
     }
     
 }

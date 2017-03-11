@@ -5,9 +5,7 @@
  */
 package exam;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,12 +43,14 @@ public class CancionAdmin extends Admin {
         
     }
     
-    public void agregar(Cancion cancion) {
-        
+    public void agregar() {
+        Cancion cancion = editar(null);
+        canciones.add(cancion);
     }
     
     public void actualizar(Cancion cancion) {
-        
+        cancion = editar(cancion);
+        canciones.set(cancion.getId(), cancion);
     }
     
     public void eliminar(int id) {
@@ -67,7 +67,10 @@ public class CancionAdmin extends Admin {
         
     }
     
-    public void mostraLista() {
+    public void listarTodo() {
+        for (Cancion cancion : canciones) {
+            System.out.println(cancion);
+        }
         
     }
     
