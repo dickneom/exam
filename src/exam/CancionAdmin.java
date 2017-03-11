@@ -20,8 +20,82 @@ public class CancionAdmin extends Admin {
         canciones = new Canciones();
     }
     
+    public void agregar() {
+        Cancion cancion = editar(null);
+        cancion.setId(proximoId());
+        canciones.add(cancion);
+    }
     
-    public Cancion editar(Cancion cancion) {
+    private int proximoId() {
+        int id = -1;
+        for (Cancion cancion : canciones) {
+            id = cancion.getId() > id ? cancion.getId() : id;
+        }
+        
+        return id + 1;
+    }
+    
+    public void actualizar() {
+        try {
+            String idCancionStr = leerDato("Id de la cancion a editar:");
+            int id = Integer.parseInt(idCancionStr);
+            Cancion cancion = canciones.buscarPorId(id);
+            if (cancion != null) {
+                cancion = editar(cancion);
+                int indice = canciones.buscarIndice(id);
+                canciones.set(indice, cancion);
+            } else {
+                System.out.println("CANCION NO ENCONTRADA.");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CancionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void eliminar() {
+        try {
+            String idCancionStr = leerDato("Id de la cancion a eliminar:");
+            int id = Integer.parseInt(idCancionStr);
+            Cancion cancion = canciones.buscarPorId(id);
+            if (cancion != null) {
+                int indice = canciones.buscarIndice(id);
+                canciones.remove(indice);
+            } else {
+                System.out.println("CANCION NO ENCONTRADA.");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CancionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public void listarTodo() {
+        for (int i = 0; i < canciones.size(); i++) {
+            Cancion cancion = canciones.get(i);
+            
+            System.out.println(i + " - " + cancion);
+        }
+    }
+    
+    public void escuchar() {
+        try {
+            String idCancionStr = leerDato("Id de la cancion a escuchar:");
+            int id = Integer.parseInt(idCancionStr);
+            Cancion cancion = canciones.buscarPorId(id);
+            if (cancion != null) {
+                System.out.println("Escuchando cancion: " + cancion.getNombre());
+                int indice = canciones.buscarIndice(id);
+                cancion.setContador(cancion.getContador() + 1);
+                canciones.set(indice, cancion);
+            } else {
+                System.out.println("CANCION NO ENCONTRADA.");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CancionAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private Cancion editar(Cancion cancion) {
 
         if (cancion == null) {
             cancion = new Cancion();
@@ -49,47 +123,4 @@ public class CancionAdmin extends Admin {
     public void validar(Cancion cancion) {
         
     }
-    
-    public void agregar() {
-        Cancion cancion = editar(null);
-        canciones.add(cancion);
-    }
-    
-    public void actualizar(int indice) {
-        Cancion cancion = buscar(indice);
-        cancion = editar(cancion);
-        canciones.set(cancion.getId(), cancion);
-    }
-    
-    public void eliminar(int indice) {
-        canciones.remove(indice);
-    }
-    
-    public Cancion buscar(int indice) {
-        Cancion cancion = canciones.get(indice);
-        cancion.setId(indice);
-        return cancion;
-    }
-    
-    
-    
-    public void buscarNombre() {
-        
-    }
-    
-    public void buscarAlbum() {
-        
-    }
-    
-    public void listarTodo() {
-        for (Cancion cancion : canciones) {
-            System.out.println(cancion);
-        }
-        
-    }
-    
-    public void mostrarUno(int id) {
-        
-    }
-    
 }

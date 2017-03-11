@@ -17,9 +17,12 @@ public class Cancion extends Objeto {
     private int contador;
 
     public Cancion() {
+        super();
     }
 
-    public Cancion(String nombre, String album, String artista, int duracion, int contador) {
+    public Cancion(int id, String nombre, String album, String artista, int duracion, int contador) {
+        this();
+        this.id = id;
         this.nombre = nombre;
         this.album = album;
         this.artista = artista;
@@ -69,7 +72,7 @@ public class Cancion extends Objeto {
     
     @Override
     public String toString() {
-        return nombre + " - " + album + " - " + artista + " - " + String.valueOf(duracion) + " - " + String.valueOf(contador);
+        return id + " - " + nombre + " - " + album + " - " + artista + " - " + String.valueOf(duracion) + " - " + String.valueOf(contador);
     }
 
 }

@@ -10,7 +10,11 @@ package exam;
  * @author dickneom
  */
 public class Objeto {
-    private int id;
+    protected int id;
+
+    public Objeto() {
+        id = -1;
+    }
 
     public int getId() {
         return id;

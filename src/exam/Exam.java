@@ -5,6 +5,12 @@
  */
 package exam;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author dickneom
@@ -15,17 +21,7 @@ public class Exam {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CancionAdmin ca = new CancionAdmin();
-        
-        ca.actualizar(3);
-        
-        System.out.println("Actuzalizado");
-        ca.listarTodo();
-        
-        System.out.println("Eliminando");
-        ca.eliminar(5);
-        
-        ca.listarTodo();
+        App app = new App();
     }
     
 }
