@@ -18,9 +18,9 @@ public abstract class Admin {
     protected String leerDato(String texto) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String dato = "";
-        System.out.print(texto + " ");
         
         while (dato.isEmpty()) {
+            System.out.print(texto + " ");
             dato = br.readLine();
         }
         

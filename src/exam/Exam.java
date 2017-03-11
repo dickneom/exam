@@ -17,7 +17,7 @@ public class Exam {
     public static void main(String[] args) {
         CancionAdmin ca = new CancionAdmin();
         
-        ca.agregar();
+        ca.actualizar(3);
         
         ca.listarTodo();
     }

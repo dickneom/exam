@@ -48,13 +48,20 @@ public class CancionAdmin extends Admin {
         canciones.add(cancion);
     }
     
-    public void actualizar(Cancion cancion) {
+    public void actualizar(int indice) {
+        Cancion cancion = buscar(indice);
         cancion = editar(cancion);
         canciones.set(cancion.getId(), cancion);
     }
     
     public void eliminar(int id) {
         
+    }
+    
+    public Cancion buscar(int indice) {
+        Cancion cancion = canciones.get(indice);
+        cancion.setId(indice);
+        return cancion;
     }
     
     
